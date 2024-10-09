@@ -61,8 +61,8 @@ jobs:
           7z.exe x gmp-v6.1.2-${{ matrix.compiler.name }}.zip -o"gmp-v6.1.2-${{ matrix.compiler.name }}" &&^
           cd gmp-v6.1.2-${{ matrix.compiler.name }} &&^
           cd lib &&^
-          del /s /q libgmp.la &&^
-          rmdir /q /s pkgconfig
+          del /s /q libgmp.la
+      # &&^ rmdir /q /s pkgconfig
     
       - name: set PATH, check mingw version, cmake generate, build and install
         shell: msys2 {0}
