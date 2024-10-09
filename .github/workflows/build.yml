@@ -53,7 +53,7 @@ jobs:
         run: |
           curl "https://ftp.gnu.org/gnu/gnucobol/gnucobol-3.2_win.zip" -L --output gnucobol.zip &&^
           7z.exe x gnucobol.zip &&^
-          rename gnucobol-3.2_win ${{ env.installationPath }}
+          rename gnucobol-3.2_win ${{ env.libraryName }}
           
       - name: curl PortableGit-2.38.1-64-bit.7z.exe
         shell: cmd
