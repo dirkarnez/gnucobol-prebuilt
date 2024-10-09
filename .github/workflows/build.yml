@@ -57,8 +57,8 @@ jobs:
 
       - shell: cmd
         run: |
-          curl https://github.com/dirkarnez/gmp-prebuilt/releases/download/v6.3.0/gmp-v6.1.2-${{ matrix.compiler.name }}.zip -L -O &&^
-          7z.exe x gmp-v6.3.0-${{ matrix.compiler.name }}.zip -o"gmp-v6.1.2-${{ matrix.compiler.name }}" &&^
+          curl https://github.com/dirkarnez/gmp-prebuilt/releases/download/v6.1.2/gmp-v6.1.2-${{ matrix.compiler.name }}.zip -L -O &&^
+          7z.exe x gmp-v6.1.2-${{ matrix.compiler.name }}.zip -o"gmp-v6.1.2-${{ matrix.compiler.name }}" &&^
           cd gmp-v6.1.2-${{ matrix.compiler.name }} &&^
           cd lib &&^
           del /s /q libgmp.la &&^
