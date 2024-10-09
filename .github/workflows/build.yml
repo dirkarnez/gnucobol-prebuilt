@@ -55,7 +55,7 @@ jobs:
         shell: cmd
         run:  curl https://github.com/git-for-windows/git/releases/download/v2.38.1.windows.1/PortableGit-2.38.1-64-bit.7z.exe -L --output PortableGit-2.38.1-64-bit.7z.exe && dir && 7z.exe x PortableGit-2.38.1-64-bit.7z.exe -o"${{ github.workspace }}\PortableGit-2.38.1-64-bit"
 
-      - shell: cmd
+      # - shell: cmd
         # run: |
         #   curl https://github.com/dirkarnez/gmp-prebuilt/releases/download/v6.3.0/gmp-v6.3.0-${{ matrix.compiler.name }}.zip -L -O &&^
         #   7z.exe x gmp-v6.3.0-${{ matrix.compiler.name }}.zip -o"gmp-v6.3.0-${{ matrix.compiler.name }}"
@@ -65,8 +65,8 @@ jobs:
         # del /s /q libgmp.la &&^
         # rmdir /q /s pkgconfig
 
-     #  export GMP_CFLAGS="-I$workspace/gmp-v6.3.0-${{ matrix.compiler.name }}/include" && \
-     #  export GMP_LIBS="-L$workspace/gmp-v6.3.0-${{ matrix.compiler.name }}/lib -lgmp" && \
+ #  export GMP_CFLAGS="-I$workspace/gmp-v6.3.0-${{ matrix.compiler.name }}/include" && \
+ #  export GMP_LIBS="-L$workspace/gmp-v6.3.0-${{ matrix.compiler.name }}/lib -lgmp" && \
     
       - name: set PATH, check mingw version, cmake generate, build and install
         shell: msys2 {0}
