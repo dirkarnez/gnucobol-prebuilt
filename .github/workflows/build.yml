@@ -76,8 +76,8 @@ jobs:
             cd ${{ env.libraryName }} &&  \
             g++ --version &&  \
             ./configure --help && \
-            export CFLAGS="$CFLAGS -I$workspace/gmp-v6.3.0-${{ matrix.compiler.name }}/include" && \
-            export LDFLAGS="$LDFLAGS -L$workspace/gmp-v6.3.0-${{ matrix.compiler.name }}/lib -lgmp" && \
+            export GMP_CFLAGS="-I$workspace/gmp-v6.3.0-${{ matrix.compiler.name }}/include" && \
+            export GMP_LIBS="-L$workspace/gmp-v6.3.0-${{ matrix.compiler.name }}/lib -lgmp" && \
             ./configure --enable-static --prefix="$(pwd)/${{ env.installationPath }}" && \
             make install
   
