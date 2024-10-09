@@ -39,7 +39,7 @@ jobs:
         uses: msys2/setup-msys2@v2
         with:
           msystem: MINGW64
-          install: make autoconf automake libtool autogen perl
+          install: make autoconf automake libtool autogen perl pkg-config
           
       - name: download compiler
         if: ${{  matrix.compiler.url }}
@@ -62,9 +62,12 @@ jobs:
       - shell: cmd
         run: |
           curl https://github.com/dirkarnez/gmp-prebuilt/releases/download/v6.3.0/gmp-v6.3.0-${{ matrix.compiler.name }}.zip -L -O &&^
-          7z.exe x gmp-v6.3.0-${{ matrix.compiler.name }}.zip -o"gmp-v6.3.0-${{ matrix.compiler.name }}"
+          7z.exe x gmp-v6.3.0-${{ matrix.compiler.name }}.zip -o"gmp-v6.3.0-${{ matrix.compiler.name }}" &&^
+          cd gmp-v6.3.0-${{ matrix.compiler.name }} &&^
+          cd lib &&^
+          del /s /q libgmp.la &&^
+          rmdir /q /s pkgconfig
           
-
       - name: set PATH, check mingw version, cmake generate, build and install
         shell: msys2 {0}
         run: |
