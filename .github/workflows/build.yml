@@ -53,7 +53,7 @@ jobs:
         run: |
           curl "https://ftp.gnu.org/gnu/gnucobol/gnucobol-3.2_win.zip" -L --output gnucobol.zip &&^
           7z.exe x gnucobol.zip &&^
-          rename gnucobol-3.2_win gnucobol
+          rename gnucobol-3.2_win ${{ env.installationPath }}
           
       - name: curl PortableGit-2.38.1-64-bit.7z.exe
         shell: cmd
@@ -64,7 +64,7 @@ jobs:
         run: |
             workspace=$(pwd) && \
             export PATH="$workspace/mingw64:$workspace/mingw64/bin:$workspace/PortableGit-2.38.1-64-bit:$workspace/PortableGit-2.38.1-64-bit/bin:$workspace/msys64/usr/bin:/usr/bin" &&  \
-            cd make &&  \
+            cd ${{ env.installationPath }} &&  \
             g++ --version &&  \
             ./configure --help && \
             ./configure --enable-static --prefix="$(pwd)/${{ env.installationPath }}" && \
