@@ -1,7 +1,3 @@
-
-
-needs libgmp
-
 name: cpp-mingw-prebuilt-release-actions-workflow
 on:
   push:
