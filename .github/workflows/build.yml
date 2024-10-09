@@ -14,10 +14,10 @@ jobs:
     strategy:
       matrix:
         compiler:
-        - {
-            name: "x86_64-8.1.0-release-posix-seh-rt_v6-rev0",
-            url: "https://github.com/dirkarnez/cpp-tools/raw/main/x86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z"
-          }
+        # - {
+        #     name: "x86_64-8.1.0-release-posix-seh-rt_v6-rev0",
+        #     url: "https://github.com/dirkarnez/cpp-tools/raw/main/x86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z"
+        #   }
         - {
             name: "winlibs-x86_64-posix-seh-gcc-11.2.0-mingw-w64-9.0.0-r1",
             url: "https://github.com/brechtsanders/winlibs_mingw/releases/download/11.2.0-12.0.1-9.0.0-r1/winlibs-x86_64-posix-seh-gcc-11.2.0-mingw-w64-9.0.0-r1.zip"
@@ -29,10 +29,6 @@ jobs:
     env:
       libraryName: gnucobol
     steps:
-      #       tagName: libgpg-error-1.47
-      # - name: git clone
-      #   shell: cmd
-      #   run: git clone --recurse-submodules https://dev.gnupg.org/source/libgpg-error.git && cd libgpg-error && git checkout ${{ env.tagName }}
       - uses: actions/checkout@v4
       
       - name: Install MSYS2
@@ -62,11 +58,12 @@ jobs:
       - shell: cmd
         run: |
           curl https://github.com/dirkarnez/gmp-prebuilt/releases/download/v6.3.0/gmp-v6.3.0-${{ matrix.compiler.name }}.zip -L -O &&^
-          7z.exe x gmp-v6.3.0-${{ matrix.compiler.name }}.zip -o"gmp-v6.3.0-${{ matrix.compiler.name }}" &&^
-          cd gmp-v6.3.0-${{ matrix.compiler.name }} &&^
-          cd lib &&^
-          del /s /q libgmp.la &&^
-          rmdir /q /s pkgconfig
+          7z.exe x gmp-v6.3.0-${{ matrix.compiler.name }}.zip -o"gmp-v6.3.0-${{ matrix.compiler.name }}"
+          
+        # cd gmp-v6.3.0-${{ matrix.compiler.name }} &&^
+        # cd lib &&^
+        # del /s /q libgmp.la &&^
+        # rmdir /q /s pkgconfig
           
       - name: set PATH, check mingw version, cmake generate, build and install
         shell: msys2 {0}
